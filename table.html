@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Description</title>
+    <style type="text/css">
+        table {
+            width: 50%;
+            border: 2px solid black;
+            padding: 1px;
+            border-collapse: collapse;
+        }
+
+            table td, table th {
+                text-align: center;
+                border: 1px solid black;
+            }
+s
+            table .FirstColumn {
+                background-color: #777;
+            }
+
+            table thead tr {
+                background-color: yellow;
+            }
+            table .secondblock{
+                background-color:chartreuse ;
+                font-weight: bold;
+            }
+            table .third{
+                
+                background-color:blue ;
+            }
+            table .third_1{
+                background-color:red;
+            }
+    </style>
+</head>
+<body background="https://unsplash.com/backgrounds/colors/white">
+    <h1>Product Description</h1>
+    <table border="1" cellpadding="10px">
+        <thead>
+            <tr align="center">
+                <th class="FirstColumn" rowspan="2" >Product ID</th><th rowspan="2">Name</th>
+                <th colspan="2">Price</th>
+            </tr>
+            <tr>
+               <th class="third_1">Rs</th><th class="third_1">Ps</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr> <td class="FirstColumn" style="font-weight: bold;">1201</td><td class="secondblock">Laptop</td><td class="third">33000</td><td class="third">25</td></tr>
+            <tr> <td class="FirstColumn" style="font-weight: bold;">1202</td><td class="secondblock">Mobile</td><td class="third">20000</td><td class="third">20</td></tr>
+            <tr> <td class="FirstColumn" style="font-weight: bold;">1203</td><td class="secondblock">Earphones</td><td class="third">1299</td><td class="third">75</td></tr>
+            <tr> <td class="FirstColumn" style="font-weight: bold;">1204</td><td class="secondblock">OTG</td><td class="third">80</td class="third"><td class="third">10</td></tr>
+            <tr><td class="FirstColumn" style="font-weight: bold;">1205</td><td class="secondblock">Charger</td><td class="third">599</td class="third"><td class="third">139</td></tr>
+        
+        </tbody>
+    </table>
+</body>
+</html>
