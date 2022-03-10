@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rest and Spread</title>
 </head>
-<body>
+<body >
     <script type="text/javascript">
-        function calci(a,...b){
-            var min=a;
-            var max=a;
-            var sum=a;
-            for(var i=0; i<b.length;i++){
-                if(min<b[i]){
-                    min=b[i];
-                } else if(max>b[i]){
-                    max=b[i];
+        function test(a, ...b) {
+            let x = parseInt(Math.max(a, ...b));
+            let y = parseInt(Math.min(a, ...b));
+            var calci = 0;
+                for(var i in arguments){
+                    calci += arguments[i];
                 }
-                sum=sum+b[i];
+                document.write('Sum is :'+calci+'<br>');
+                document.write("The max number is "+x+" <br>" );
+                document.write("The min number is "+y+" <br>" );
+            
             }
-            document.write('<p>Sum = '+sum+', Min = '+min+', Max = '+max+'</p>');
-        }
-        calci(10, 20, 30, 5, 15);
-        y=[20,50,80,60,100,10];
-        calci(...y);
+        test(10, 20, 30, 5, 15);
+
+            let x = Math.max(c);
+            let y = Math.min(c);
+        
     </script>
 </body>
 </html>
