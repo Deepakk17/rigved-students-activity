@@ -1,0 +1,64 @@
+mysql> use deepak;
+Database changed
+mysql> create table employees(employee_id int primary key, emp_name char(15), age int(2), email varchar(30));
+Query OK, 0 rows affected, 1 warning (2.33 sec)
+
+mysql> alter table employees add constraint unique(email);
+Query OK, 0 rows affected (1.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employees
+    -> add check (age>18);
+Query OK, 0 rows affected (4.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into employees(employee_id, emp_name, age,email)
+    -> values(100, 'deepak',22,'deepakk1726@gmail.com');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> alter table employees add column aadhar int (12);
+Query OK, 0 rows affected, 1 warning (1.48 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from employees;
++-------------+----------+------+-----------------------+--------+
+| employee_id | emp_name | age  | email                 | aadhar |
++-------------+----------+------+-----------------------+--------+
+|         100 | deepak   |   22 | deepakk1726@gmail.com |   NULL |
++-------------+----------+------+-----------------------+--------+
+1 row in set (0.02 sec)
+
+mysql> alter table employees add constraint unique (aadhar);
+Query OK, 0 rows affected (2.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into employees(employee_id, emp_name, age,email)
+    -> values(200, 'gautam',21,'gautamv6533@gmail.com');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> alter table employees add column aadhar int(12);
+ERROR 1060 (42S21): Duplicate column name 'aadhar'
+mysql> select * from employees;
++-------------+----------+------+-----------------------+--------+
+| employee_id | emp_name | age  | email                 | aadhar |
++-------------+----------+------+-----------------------+--------+
+|         100 | deepak   |   22 | deepakk1726@gmail.com |   NULL |
+|         200 | gautam   |   21 | gautamv6533@gmail.com |   NULL |
++-------------+----------+------+-----------------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into employees(employee_id, emp_name, age,email)
+    -> values(300, 'dheeraj',23,'dheerajg5821@gmail.com');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> select * from employees;
++-------------+----------+------+------------------------+--------+
+| employee_id | emp_name | age  | email                  | aadhar |
++-------------+----------+------+------------------------+--------+
+|         100 | deepak   |   22 | deepakk1726@gmail.com  |   NULL |
+|         200 | gautam   |   21 | gautamv6533@gmail.com  |   NULL |
+|         300 | dheeraj  |   23 | dheerajg5821@gmail.com |   NULL |
++-------------+----------+------+------------------------+--------+
+3 rows in set (0.00 sec)
+
+mysql>
