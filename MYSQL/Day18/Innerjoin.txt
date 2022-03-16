@@ -1,0 +1,101 @@
+mysql> use deepak;
+Database changed
+mysql> create table students(RollNO int primary key, Name char(15), Age int(2));
+Query OK, 0 rows affected, 1 warning (5.86 sec)
+
+mysql> insert into students(RollNO, Name, Age)
+    -> values(1,'RAJ',20);
+Query OK, 1 row affected (0.70 sec)
+
+mysql> select * from students;
++--------+------+------+
+| RollNO | Name | Age  |
++--------+------+------+
+|      1 | RAJ  |   20 |
++--------+------+------+
+1 row in set (0.12 sec)
+
+mysql> insert into students(RollNO, Name, Age)
+    -> values(2,'RAMESH',20);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into students(RollNO, Name, Age)
+    -> values(3,'RAVI',21);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into students(RollNO, Name, Age)
+    -> values(4,'SURAJ',22);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from students;
++--------+--------+------+
+| RollNO | Name   | Age  |
++--------+--------+------+
+|      1 | RAJ    |   20 |
+|      2 | RAMESH |   20 |
+|      3 | RAVI   |   21 |
+|      4 | SURAJ  |   22 |
++--------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> create table subject(Mid int primary key,Physics char(15),Maths (15),Chemistry (15),Student_RollNo int(2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(15),Chemistry (15),Student_RollNo int(2))' at line 1
+mysql> create table marks(m_id int unique, physics int (3), maths int (3), chemistry int (3),rollno int (2), foreign key(rollno) references students(rollno));
+Query OK, 0 rows affected, 4 warnings (3.52 sec)
+
+mysql> Query OK, 0 rows affected, 4 warnings (3.16 sec)
+    -> bihsbcnljac
+    ->
+    -> \c
+mysql> create table marks(m_id int unique, physics int (3), maths int (3), chemistry int (3),rollno int (2), foreign key(rollno) references students(rollno));
+ERROR 1050 (42S01): Table 'marks' already exists
+mysql> Query OK, 0 rows affected, 4 warnings (3.16 sec)
+    -> insert into marks values(11, 70, 90, 70, 2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected, 4 warnings (3.16 sec)
+insert into marks values(11, 70' at line 1
+mysql> insert into marks values(11, 70, 90, 70, 2);
+Query OK, 1 row affected (0.32 sec)
+
+mysql> insert into marks values(22, 80, 80, 80, 1);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into marks values(33, 90, 90, 70, 3);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into marks values(44, 88, 88, 77, 4);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from marks;
++------+---------+-------+-----------+--------+
+| m_id | physics | maths | chemistry | rollno |
++------+---------+-------+-----------+--------+
+|   11 |      70 |    90 |        70 |      2 |
+|   22 |      80 |    80 |        80 |      1 |
+|   33 |      90 |    90 |        70 |      3 |
+|   44 |      88 |    88 |        77 |      4 |
++------+---------+-------+-----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from students;
++--------+--------+------+
+| RollNO | Name   | Age  |
++--------+--------+------+
+|      1 | RAJ    |   20 |
+|      2 | RAMESH |   20 |
+|      3 | RAVI   |   21 |
+|      4 | SURAJ  |   22 |
++--------+--------+------+
+4 rows in set (0.24 sec)
+
+mysql> select s.RollNo, s.Name, m.physics, m.maths, m.chemistry from students s inner join marks m on s.rollno=m.rollno;
++--------+--------+---------+-------+-----------+
+| RollNo | Name   | physics | maths | chemistry |
++--------+--------+---------+-------+-----------+
+|      1 | RAJ    |      80 |    80 |        80 |
+|      2 | RAMESH |      70 |    90 |        70 |
+|      3 | RAVI   |      90 |    90 |        70 |
+|      4 | SURAJ  |      88 |    88 |        77 |
++--------+--------+---------+-------+-----------+
+4 rows in set (0.13 sec)
+
+mysql>
