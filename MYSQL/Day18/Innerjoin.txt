@@ -98,4 +98,13 @@ mysql> select s.RollNo, s.Name, m.physics, m.maths, m.chemistry from students s 
 +--------+--------+---------+-------+-----------+
 4 rows in set (0.13 sec)
 
-mysql>
+mysql> select students.rollno, students.name, marks.physics, marks.maths, marks.chemistry, (physics + maths + chemistry) as total, round((physics + maths + chemistry)/3) as average from students inner join marks on students.rollno=marks.rollno;
++--------+--------+---------+-------+-----------+-------+---------+
+| rollno | name   | physics | maths | chemistry | total | average |
++--------+--------+---------+-------+-----------+-------+---------+
+|      1 | RAJ    |      80 |    80 |        80 |   240 |      80 |
+|      2 | RAMESH |      70 |    90 |        70 |   230 |      77 |
+|      3 | RAVI   |      90 |    90 |        70 |   250 |      83 |
+|      4 | SURAJ  |      88 |    88 |        77 |   253 |      84 |
++--------+--------+---------+-------+-----------+-------+---------+
+4 rows in set (0.06 sec)
