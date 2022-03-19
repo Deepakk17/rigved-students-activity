@@ -1,0 +1,80 @@
+create table Person (id int primary key auto_increment, name varchar(25), gender varchar(10));
+Query OK, 0 rows affected (2.64 sec)
+
+mysql> desc person;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| id     | int         | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(25) | YES  |     | NULL    |                |
+| gender | varchar(10) | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+3 rows in set (0.17 sec)
+
+mysql> insert into person(name,gender) values('RAJ','Male'),('RANI','Female'),('RAHUL','Male');
+Query OK, 3 rows affected (0.19 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from person;
++----+-------+--------+
+| id | name  | gender |
++----+-------+--------+
+|  1 | RAJ   | Male   |
+|  2 | RANI  | Female |
+|  3 | RAHUL | Male   |
++----+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> delimiter $$
+
+mysql> create procedure salutation(in pid int)
+    -> begin
+    -> declare g varchar(10);
+    -> declare n varchar(10);
+    -> select name into n from person where id=pid;
+    -> select gender into g from person where id=pid;
+    -> if lower(g) = 'male'
+    -> then update person set name=concat('Mr.',n) where id=pid;
+    -> else update person set name=concat('Ms.',n) where id=pid;
+    -> end if;
+    -> end
+    -> $$
+Query OK, 0 rows affected (0.24 sec)
+
+mysql> select * from person$$
++----+-------+--------+
+| id | name  | gender |
++----+-------+--------+
+|  1 | RAJ   | Male   |
+|  2 | RANI  | Female |
+|  3 | RAHUL | Male   |
++----+-------+--------+
+3 rows in set (0.02 sec)
+
+mysql> call salutation(1)$$
+Query OK, 1 row affected (0.25 sec)
+
+mysql> select * from person$$
++----+--------+--------+
+| id | name   | gender |
++----+--------+--------+
+|  1 | Mr.RAJ | Male   |
+|  2 | RANI   | Female |
+|  3 | RAHUL  | Male   |
++----+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> call salutation(2)$$
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from person$$
++----+---------+--------+
+| id | name    | gender |
++----+---------+--------+
+|  1 | Mr.RAJ  | Male   |
+|  2 | Ms.RANI | Female |
+|  3 | RAHUL   | Male   |
++----+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql>
