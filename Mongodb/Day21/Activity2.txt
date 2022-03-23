@@ -1,0 +1,81 @@
+1. Query Operators : $or : //any one value must be true 
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+> db.myCollection.find({$or:[{"name":"Alex"},{"salary":35000}]});
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+2. Query op : $and : // all values must be true
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+> db.myCollection.find({$and:[{name:"Bruce"},{age:35}]});
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+
+3.Query op : $in : // value in collection 
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+>
+> db.myCollection.find({age:{$in:[35,38]}});
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+> db.myCollection.find({age:{$in:[35]}});
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+>
+> db.myCollection.find({age:{$in:[38]}});
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+>
+
+4.Query op : $ne // not equal to
+
+> db.myCollection.find({name:{$ne:"Alex"}});
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+5. Query op : $gt and $gte // greater and greater and equal to
+
+> db.myCollection.find({age:{$gte:35}});
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+>
+> db.myCollection.find({age:{$gt:35}});
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+6. Query op : $lte // less than equal too
+
+> db.myCollection.find({age:{$lte:35}});
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+>
+
+7. Query op : $nor //returns all the documents that fail to match.
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+>
+> db.myCollection.find({$nor:[{_id:13},{salary:35000}]});
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+
+8. Query op : $exist // gives all the values that exist if TRUE
+
+>  db.myCollection.find({name: {$exists: true}})
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+>

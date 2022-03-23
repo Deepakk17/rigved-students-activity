@@ -1,0 +1,111 @@
+1.Create new myCollection collection and insert some values
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex" }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+
+2.insert many values
+> db.myCollection.insertMany([
+... {firstname:"Alex",lastnmae:"Jain"}]);
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6239c91d50c98e52654f3b51")
+        ]
+}
+
+3.Using pretty() function
+
+> db.myCollection.find().pretty();
+{ "_id" : 11, "name" : "Alex" }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+{
+        "_id" : ObjectId("6239c91d50c98e52654f3b51"),
+        "firstname" : "Alex",
+        "lastnmae" : "Jain"
+}
+
+4.Using find FILTER() func
+
+> db.myCollection.find({_id:11});
+{ "_id" : 11, "name" : "Alex" }
+
+5.Using find({},{name:1} hide some properties
+
+> db.myCollection.find({},{name:1});
+{ "_id" : 11, "name" : "Alex" }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+{ "_id" : ObjectId("6239c91d50c98e52654f3b51") }
+
+6. Hiding the ID using 0 
+
+> db.myCollection.find({},{name:1,_id:0});
+{ "name" : "Alex" }
+{ "name" : "Bruce" }
+{ "name" : "Sourav" }
+{  }
+
+7.Gettting all the elements from hd
+
+> db.myCollection.find({},{_id:0});
+{ "name" : "Alex" }
+{ "name" : "Bruce" }
+{ "name" : "Sourav" }
+{ "firstname" : "Alex", "lastnmae" : "Jain" }
+
+8. //javascript
+
+> var x = 10;
+> var y = 23;
+> var z = x+y;
+> z;
+33
+> function welcome(){
+... return 'Hello World !!!';
+... }
+> welcome();
+Hello World !!!
+>
+
+9.DeleteOne()
+
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex" }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+{ "_id" : ObjectId("6239c91d50c98e52654f3b51"), "firstname" : "Alex", "lastnmae" : "Jain" }
+>
+> db.myCollection.deleteOne({firstname:"Alex"});
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex" }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+
+10. Updating
+
+> db.myCollection.update({"_id": 11}, {$set: {age:35,salary:35000}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce" }
+{ "_id" : 13, "name" : "Sourav" }
+> db.myCollection.update({"_id": 12}, {$set: {age:35,salary:36000}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.myCollection.update({"_id": 13}, {$set: {age:38,salary:35000}});
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.myCollection.find();
+{ "_id" : 11, "name" : "Alex", "age" : 35, "salary" : 35000 }
+{ "_id" : 12, "name" : "Bruce", "age" : 35, "salary" : 36000 }
+{ "_id" : 13, "name" : "Sourav", "age" : 38, "salary" : 35000 }
+
+11. Nested arrays
+
+> db.EMPLOYEE.insertOne({_id:2,firstname:"Virat",lastname:"Kholi",hobbies:["Cricket","Chess"],address:{"state":"MH","city":"MBI"}});
+{ "acknowledged" : true, "insertedId" : 2 }
+> db.EMPLOYEE.find();
+{ "_id" : 2, "firstname" : "Virat", "lastname" : "Kholi", "hobbies" : [ "Cricket", "Chess" ], "address" : { "state" : "MH", "city" : "MBI" } }
+
