@@ -14,7 +14,7 @@ app.get('/',(request,response)=>{
     response.json(jsArray)
 });
 //----OUTPUT -----
-//C:\Users\ldove\Desktop\rigved-students-activity\rigved-students-activity\NodeJS\Day 24>node activityexpress.js
+//C:\Users\Deepak\OneDrive\Desktop\NEW\rigved-students-activity\NodeJS\Day24> node .\Activityexpress.js
 //[
 //  { id: 11, name: 'Alex', Salaray: 50000 },
 //    { id: 12, name: 'Bruce', Salaray: 40000 },
