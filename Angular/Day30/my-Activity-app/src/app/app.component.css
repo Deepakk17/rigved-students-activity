@@ -1,0 +1,8 @@
+div{
+    padding: 1em ;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #2439f8, #e21919);
+    box-shadow:  -20px -20px 60px #c60818,
+                 20px 20px 60px #e21118;
+    width: fit-content;
+}

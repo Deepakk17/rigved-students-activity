@@ -1,0 +1,33 @@
+h2{
+    padding:0.2em;
+    background: linear-gradient(315deg, #df0d22, #c10f0f);
+    border-radius: 50px;
+    box-shadow:  -20px -20px 60px #db1717,
+                 20px 20px 60px #db0e2a;
+                 width: fit-content;
+}
+.container{
+    padding: 0.5em;
+    background: linear-gradient(315deg, #de0d14, #1f72ef);
+    border-radius: 50px;
+    box-shadow:  -20px -20px 60px #e00b0b,
+                 20px 20px 60px #285abf;
+                 width: 500px;
+                 height: 500px;
+}
+div > table{
+    padding: 1em ;
+    border-radius: 50px;
+    background: linear-gradient(315deg, #e11919, #ce1818);
+    box-shadow:  -20px -20px 60px #3e2e96,
+                 20px 20px 60px #2d2ba6;
+                 
+}
+th,td {
+    padding: 1em ;
+    border-radius: 20px;
+    background: linear-gradient(315deg, #cacaca, #f0f0f0);
+    box-shadow:  -20px -20px 60px #d8d5d5,
+                 20px 20px 60px #ffffff;
+                 
+}
