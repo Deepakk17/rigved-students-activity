@@ -1,0 +1,8 @@
+<div>
+    <h1>Parent Component has {{username}}</h1>
+    <app-child [name] = "username"></app-child>
+    <hr />
+    <div *ngFor = "let user of usernameArray">
+        <app-child [name] = "user"></app-child>
+    </div> 
+</div>
