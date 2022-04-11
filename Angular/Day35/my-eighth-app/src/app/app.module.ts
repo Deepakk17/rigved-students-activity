@@ -11,9 +11,7 @@ import { ActivityComponent } from './activity/activity.component';
   declarations: [
     AppComponent,
     MdfDemoComponent,
-    ActivityComponent,
-    HeroDetailComponent,
-    HeroesComponent
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
