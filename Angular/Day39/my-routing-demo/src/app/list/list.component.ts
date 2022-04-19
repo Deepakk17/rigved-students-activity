@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -8,12 +7,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  name : string | undefined = undefined;
-  constructor(private _activatedRoute : ActivatedRoute) { }
+  items : undefined | any[] = undefined;
 
+  constructor(public service : UserService) { }
+  // this is automatically called after the constructor
   ngOnInit(): void {
-    this._activatedRoute.parent?.params.subscribe((parameter: Params) => {
-      this.name = parameter['name']
-    })
+    this.items = this.service.getUsers();
   }
+
 }
+

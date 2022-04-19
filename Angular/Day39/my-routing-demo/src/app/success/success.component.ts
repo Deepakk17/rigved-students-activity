@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { ActivatedRoute,Params } from '@angular/router';
 @Component({
   selector: 'app-success',
   templateUrl: './success.component.html',
@@ -15,5 +14,4 @@ export class SuccessComponent implements OnInit {
       this.username = parameter['name'];
     });
   }
-
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _router : Router) { }
+  constructor(private _router:Router) { }
 
   ngOnInit(): void {
   }
   username = new FormControl('');
-  handleLogin() {
+  password = new FormControl('');
+  handleLogin(){
     let name = this.username.value;
-    this._router.navigate(['success', name]); // success/:id
+    this._router.navigate(['success',name])
   }
-
 }
